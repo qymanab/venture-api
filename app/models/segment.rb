@@ -25,6 +25,3 @@ class Segment < ApplicationRecord
   end
 
 end
-
-# test = segment.check_range(couch.coords)
-# couch = Segment.find_by(name: 'couch')
