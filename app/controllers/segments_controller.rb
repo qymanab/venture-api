@@ -1,9 +1,10 @@
 class SegmentsController < ApplicationController
   before_action :set_segment, only: [:show, :update, :destroy]
-  
+
   # GET /segment
   def index
-    @segment = Segment.all
+    coordinates = [params[:latitude], params[:longitude]]
+    @segment = Segment.display_nearby(coordinates)
     json_response(@segment)
   end
 
@@ -15,8 +16,10 @@ class SegmentsController < ApplicationController
 
   # GET /segments/:id
   def show
-
+    coordinates = [params[:latitude], params[:longitude]]
+    @segment = @segment.check_range(coordinates)
     json_response(@segment)
+
   end
 
   # PUT /segments/:id
