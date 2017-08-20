@@ -3,7 +3,7 @@ class SegmentsController < ApplicationController
 
   # GET /segment
   def index
-    coordinates = [params[:latitude].to_f, params[:longitude].to_f]
+    coordinates = [params[:latitude], params[:longitude]]
     @segment = Segment.display_nearby(coordinates)
     json_response(@segment)
   end
@@ -16,9 +16,8 @@ class SegmentsController < ApplicationController
 
   # GET /segments/:id
   def show
-    p @segment
-    coordinates = [params[:latitude].to_f, params[:longitude].to_f]
-    p @segment = @segment.check_range(coordinates)
+    coordinates = [params[:latitude], params[:longitude]]
+    @segment = @segment.check_range(coordinates)
     json_response(@segment)
 
   end
