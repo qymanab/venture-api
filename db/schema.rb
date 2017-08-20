@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170819183157) do
   enable_extension "plpgsql"
 
   create_table "segments", force: :cascade do |t|
-    t.string "name", default: "Untitled"
-    t.text "body"
+    t.string "name", null: false
+    t.text "body", null: false
     t.string "latitude"
     t.string "longitude"
     t.integer "author_id"
