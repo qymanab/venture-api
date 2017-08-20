@@ -4,21 +4,26 @@ RSpec.describe 'Todos API', type: :request do
   let!(:segments) {create_list :segment, 10}
   let(:segment_id) { segments.first.id }
 
+
+
   describe 'GET /segments' do
-    before {get '/segments'}
+    before {get '/segments?latitude=41.876116499999995&longitude=-87.6530416
+'}
 
     it 'returns segments' do
+
       expect(json).not_to be_empty
       expect(json.size).to eq(10)
     end
 
     it 'returns status code 200' do
+
       expect(response).to have_http_status(200)
     end
   end
 
   describe 'GET /segments/:id' do
-    before { get "/segments/#{segment_id}" }
+    before { get "/segments/#{segment_id}?latitude=41.876116499999995&longitude=-87.6530416" }
 
     context 'when the record exists' do
       it 'returns the segment' do

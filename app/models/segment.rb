@@ -13,7 +13,7 @@ class Segment < ApplicationRecord
 
   def self.display_nearby(user_position)
     segments = Segment.all
-    segments.select {|segment| segment.in_range?(user_position, 40)}
+   return segments.select {|segment| segment.in_range?(user_position, 40)}
   end
 
   def check_range(user_position)

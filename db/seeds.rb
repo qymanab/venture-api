@@ -12,7 +12,6 @@ Segment.delete_all
   Segment.create(name: Faker::Book.title, body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
 end
 
-
 Segment.create(name:'Chair' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.876116499999995' , longitude: '-87.6530416' )
 Segment.create(name:'couch' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.8761018' , longitude: '-87.6529906' )
 Segment.create(name:'Metis Logo' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.876445499999996' , longitude: '-87.65302489999999' )
