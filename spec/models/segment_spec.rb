@@ -10,6 +10,7 @@ RSpec.describe Segment, type: :model do
   describe 'segment methods' do
       let(:segment) {Segment.create(name:'Chair' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.876116499999995' , longitude: '-87.6530416' )}
       let(:user_position) {[segment.latitude.to_f, segment.longitude.to_f]}
+      let (:antarctica_position) {[82.8628,135.0000]}
     describe 'coords' do
 
       it "converts a segment's latitude and longitude to an array of floats" do
@@ -19,8 +20,12 @@ RSpec.describe Segment, type: :model do
 
     describe 'in_range?' do
 
-      it "returns if a user is within 10 m of a segment" do
+      it "returns true if a user is within 10 m of a segment" do
         expect(segment.in_range?(user_position, 10)).to eq(true)
+      end
+
+      it "returns false if a user is further 10 m of a segment" do
+        expect(segment.in_range?(antarctica_position, 10)).to eq(false)
       end
     end
 
@@ -35,6 +40,10 @@ RSpec.describe Segment, type: :model do
 
       it "returns a collection of nearby segments" do
         expect(segment.check_range(user_position)).to eq(segment)
+      end
+
+      it "returns a collection of nearby segments" do
+        expect(segment.check_range(antarctica_position).body).to eq("You are not in range to access this content.")
       end
     end
 
