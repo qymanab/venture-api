@@ -9,9 +9,9 @@
 Segment.delete_all
 Genre.delete_all
 
-30.times do
-  Segment.create(name: Faker::Book.title, body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
-end
+# 30.times do
+#   Segment.create(name: Faker::Book.title, body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
+# end
 
 Segment.create(name:'Chair' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.876116499999995' , longitude: '-87.6530416' )
 Segment.create(name:'couch' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.8761018' , longitude: '-87.6529906' )

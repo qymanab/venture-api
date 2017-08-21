@@ -18,13 +18,13 @@ class Segment < ApplicationRecord
   def self.display_nearby(user_position)
     # user = self.user_coords(user_position)
     segments = Segment.all
-   return segments.select {|segment| segment.in_range?(user_position, 10)}
+   return segments.select {|segment| segment.in_range?(user_position, 5)}
   end
 
   def check_range(user_position)
     # user = self.user_coords(user_position)
 
-    if self.in_range?(user_position, 10)
+    if self.in_range?(user_position, 5)
       return self
     else
       return Segment.new(name: self.name, body: "You are not in range to access this content.", latitude: self.latitude , longitude: self.longitude )
