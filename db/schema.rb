@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170821002955) do
   enable_extension "plpgsql"
 
   create_table "genres", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20170821002955) do
   end
 
   create_table "segments", force: :cascade do |t|
-    t.string "name", default: "Untitled"
-    t.text "body"
+    t.string "name", null: false
+    t.text "body", null: false
     t.string "latitude"
     t.string "longitude"
     t.integer "author_id"

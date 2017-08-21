@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe SegmentsController, type: :controller do
+RSpec.describe SegmentsController, name: :controller do
 
 end
