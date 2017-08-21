@@ -49,6 +49,34 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
+  describe 'GET /segments/nearby' do
+    let(:valid_attributes) { { latitude: '41.876116499999995', longitude: '-87.6530416' } }
+    let(:invalid_attributes) { { latitude: '16', longitude: '-16' } }
+
+    context 'when the request is within range' do
+      before { get '/segments/nearby', params: valid_attributes }
+      it 'shows the nearby segments' do
+        expect(json.size).to eq(10)
+      end
+    end
+
+    context 'when the request parmas are invalid' do
+      before { get '/segments/nearby'}
+      it 'does not return any segments' do
+        expect(json.size).to eq(0)
+      end
+    end
+
+    context 'when the request parmas are out of range' do
+      before { get '/segments/nearby', params: invalid_attributes}
+      it 'does not return any segments' do
+        expect(json.size).to eq(0)
+      end
+    end
+
+
+  end
+
   describe 'POST /segments' do
     let(:valid_attributes) { { name: 'fake story', body: 'fake body', latitude: '1', longitude: '2' } }
 
