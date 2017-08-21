@@ -104,6 +104,18 @@ RSpec.describe 'Todos API', type: :request do
           .to match(/Validation failed: Body can't be blank/)
       end
     end
+
+    context "when it has a genre" do
+      let(:attributes_with_genre) { { name: 'fake story', body: 'fake body', latitude: '1', longitude: '2', genre: "['horror']" } }
+      before { post '/segments', params: valid_attributes }
+
+      it " creates segment with defined genres" do
+        # expect{ post '/segments', params: attributes_with_genre }.to change{GenresSegment.count}.by(1)
+        p Segment.last.genres_segments
+        expect(response).to have_http_status(201)
+      end
+
+    end
   end
 
   # Test suite for PUT /segments/:id
