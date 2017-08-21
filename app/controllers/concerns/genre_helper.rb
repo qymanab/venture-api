@@ -1,7 +1,10 @@
 module GenreHelper
 
   def assign_genres(segment, genre_response)
-    if genre_response
+    p "*"*50
+    p genre_response
+    p "*"*50
+    if genre_response != ""
       genre_array = parse_genres(genre_response)
       add_genres(segment, genre_array)
     else
