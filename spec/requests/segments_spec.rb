@@ -78,7 +78,7 @@ RSpec.describe 'Todos API', type: :request do
   end
 
   describe 'POST /segments' do
-    let(:valid_attributes) { { name: 'fake story', body: 'fake body', latitude: '1', longitude: '2' } }
+    let(:valid_attributes) { { name: 'fake story', body: 'fake body', latitude: '1', longitude: '2', genre: "" } }
 
     context 'when the request is valid' do
       before { post '/segments', params: valid_attributes }
