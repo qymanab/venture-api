@@ -10,6 +10,8 @@ class SegmentsController < ApplicationController
   # POST /segments
   def create
     @segment = Segment.create!(segment_params)
+
+    assign_genres(@segment, params[:genre])
     json_response(@segment, :created)
   end
 
@@ -47,6 +49,11 @@ class SegmentsController < ApplicationController
     # whitelist params
     params.permit(:name, :body, :latitude, :longitude)
   end
+  #
+  # def genre_params
+  #   # whitelist params
+  #   params.permit(:genre)
+  # end
 
   def set_segment
     @segment = Segment.find(params[:id])
