@@ -4,6 +4,8 @@ RSpec.describe Segment, type: :model do
   # ensure columns title and created_by are present before saving
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:body) }
+  it { should have_many(:genres)          }
+  it { should have_many(:genres_segments) }
 
   describe 'segment methods' do
       let(:segment) {Segment.create(name:'Chair' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.876116499999995' , longitude: '-87.6530416' )}
