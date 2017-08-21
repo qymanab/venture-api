@@ -3,8 +3,7 @@ class SegmentsController < ApplicationController
 
   # GET /segment
   def index
-    coordinates = [params[:latitude], params[:longitude]]
-    @segment = Segment.display_nearby(coordinates)
+    @segment = Segment.all
     json_response(@segment)
   end
 
@@ -32,6 +31,12 @@ class SegmentsController < ApplicationController
   def destroy
     @segment.destroy
     head :no_content
+  end
+
+  def nearby
+    coordinates = [params[:latitude], params[:longitude]]
+    @segment = Segment.display_nearby(coordinates)
+    json_response(@segment)
   end
 
 

@@ -1,5 +1,7 @@
 class Segment < ApplicationRecord
   validates_presence_of :name, :body
+  has_many :genres_segments
+  has_many :genres, through: :genres_segments
 
   def coords
     return [self.latitude.to_f, self.longitude.to_f]
