@@ -11,11 +11,7 @@ class SegmentsController < ApplicationController
   def create
     @segment = Segment.create!(segment_params)
 
-    p params[:genre]
     assign_genres(@segment, params[:genre])
-    p "*"*50
-    p @segment.genres
-    p "*"*50
     json_response(@segment, :created)
   end
 

@@ -111,7 +111,6 @@ RSpec.describe 'Todos API', type: :request do
 
       it " creates segment with defined genres" do
         # expect{ post '/segments', params: attributes_with_genre }.to change{GenresSegment.count}.by(1)
-        p Segment.last.genres_segments
         expect(response).to have_http_status(201)
       end
 
