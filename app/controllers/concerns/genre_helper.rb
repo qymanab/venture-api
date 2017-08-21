@@ -12,7 +12,7 @@ module GenreHelper
   def add_genres(segment, genre_array)
     genre_array.each do |genre|
       genre_object = Genre.find_by(name: genre)
-      segment.genres_segments << GenresSegment.create(genre: genre_object)
+      segment.genres_segments << GenresSegment.new(genre: genre_object)
     end
   end
 
