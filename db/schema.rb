@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20170821002955) do
   end
 
   create_table "segments", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body", null: false
+    t.string "name", default: "Untitled"
+    t.text "body"
     t.string "latitude"
     t.string "longitude"
     t.integer "author_id"
