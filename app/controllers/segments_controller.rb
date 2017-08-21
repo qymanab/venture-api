@@ -13,6 +13,12 @@ class SegmentsController < ApplicationController
     json_response(@segment, :created)
   end
 
+  def nearby
+    coordinates = [params[:latitude], params[:longitude]]
+    @segment = Segment.display_nearby(coordinates)
+    json_response(@segment)
+  end
+
   # GET /segments/:id
   def show
     coordinates = [params[:latitude], params[:longitude]]
@@ -33,11 +39,6 @@ class SegmentsController < ApplicationController
     head :no_content
   end
 
-  def nearby
-    coordinates = [params[:latitude], params[:longitude]]
-    @segment = Segment.display_nearby(coordinates)
-    json_response(@segment)
-  end
 
 
 
