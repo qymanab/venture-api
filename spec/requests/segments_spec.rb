@@ -106,8 +106,8 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context "when it has a genre" do
-      let(:attributes_with_genre) { { name: 'fake story', body: 'fake body', latitude: '1', longitude: '2', genre: "['horror']" } }
-      before { post '/segments', params: valid_attributes }
+      let(:attributes_with_genre) { { name: 'fake story', body: 'fake body', latitude: '1', longitude: '2', genre: ['horror'] } }
+      before { post '/segments', params: attributes_with_genre }
 
       it " creates segment with defined genres" do
         # expect{ post '/segments', params: attributes_with_genre }.to change{GenresSegment.count}.by(1)
