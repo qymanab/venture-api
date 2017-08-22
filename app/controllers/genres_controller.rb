@@ -5,7 +5,7 @@ class GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     @segments = @genre.segments
 
-    p json_response(@segments)
+    json_response(@segments)
   end
 
 
