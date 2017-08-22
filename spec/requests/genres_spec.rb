@@ -1,20 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe 'Todos API', type: :requests do
+RSpec.describe 'Todos API', type: :request do
+  before {
+    @horror = Genre.create(name: "horror")
 
-    # describe 'GET/genres' do
-    # end
+    @genre_id = @horror.id
 
-    # describe 'GET/genres/:id' do
-    # end
+    @segment = @horror.segments << Segment.new(name:'Yoda Quote', body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.8763582' , longitude: '-87.6530538')
+  }
+  after {@horror.segments = []}
 
     describe 'GET/genres/:id/segments' do
-      before { get "genres/#{genre_id}/segments" }
 
-      xit 'returns segments associated with a genre' do
+      before { get "/genres/#{@genre_id}/segments" }
+
+      it 'returns segments associated with a genre' do
+        expect(json).not_to be_empty
       end
 
-      xit 'returns the status code 200' do
+      it 'returns the status code 200' do
+        expect(response).to have_http_status(200)
       end
     end
 
