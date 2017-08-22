@@ -1,6 +1,6 @@
 class Segment < ApplicationRecord
   validates_presence_of :name, :body
-  has_many :genres_segments
+  has_many :genres_segments, dependent: :destroy
   has_many :genres, through: :genres_segments
 
   def coords
