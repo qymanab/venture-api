@@ -16,9 +16,27 @@ module GenreHelper
     end
   end
 
-  # def parse_genres(genre_response)
-  #   # JSON.parse(genre_response)
-  #   return genre_response
-  # end
+  def find_genres(genre_response)
+    if genre_response
+      get_selected_genres_segments(genre_response)
+    else
+      Segment.all
+    end
+  end
+
+  def get_selected_genres_segments(genre_array)
+    found_genres = []
+    genre_array = parse_genres(genre_array)
+    genre_array.each do |genre|
+      if Genre.find_by(name: genre)
+        found_genres << Genre.find_by(name: genre).segments
+      end
+    end
+    found_genres
+  end
+
+  def parse_genres(genre_response)
+    JSON.parse(genre_response)
+  end
 
 end
