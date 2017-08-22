@@ -2,8 +2,8 @@ module GenreHelper
 
   def assign_genres(segment, genre_response)
     if genre_response != ""
-      genre_array = parse_genres(genre_response)
-      add_genres(segment, genre_array)
+      # genre_array = parse_genres(genre_response)
+      add_genres(segment, genre_response)
     else
       add_genres(segment, ['other'])
     end
@@ -16,8 +16,9 @@ module GenreHelper
     end
   end
 
-  def parse_genres(genre_response)
-    JSON.parse(genre_response)
-  end
+  # def parse_genres(genre_response)
+  #   # JSON.parse(genre_response)
+  #   return genre_response
+  # end
 
 end
