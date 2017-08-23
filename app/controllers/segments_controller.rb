@@ -4,7 +4,8 @@ class SegmentsController < ApplicationController
   # GET /segment
   def index
     @segment = Segment.all
-    json_response(@segment)
+    @segments = attach_genres(@segment)
+    json_response(@segments)
   end
 
   # POST /segments
@@ -18,13 +19,15 @@ class SegmentsController < ApplicationController
   def nearby
     coordinates = [params[:latitude], params[:longitude]]
     @segment = Segment.display_nearby(coordinates)
-    json_response(@segment)
+    @segments = attach_genres(@segment)
+    json_response(@segments)
   end
 
   # GET /segments/:id
   def show
     coordinates = [params[:latitude], params[:longitude]]
     @segment = @segment.check_range(coordinates)
+    # @segment_with_genre = attach_genres(@segment)
     json_response(@segment)
 
   end
