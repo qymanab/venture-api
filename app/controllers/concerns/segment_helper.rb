@@ -1,9 +1,8 @@
 module SegmentHelper
   def attach_genres(segment)
-    # p segment
     if segment.class == Segment
-      # p "singular"
       {
+        id: segment.id,
         name: segment.name,
         body: segment.body,
         latitude: segment.latitude,
@@ -14,17 +13,17 @@ module SegmentHelper
       }
 
     elsif segment.empty?
-      # p 'empty'
       return []
     else
       segment.map { |segment|
-        # p 'multiple'
         {
+          id: segment.id,
           name: segment.name,
           body: segment.body,
           latitude: segment.latitude,
           longitude: segment.longitude,
           author_id: segment.author_id,
+          genre_id: segment.genres.first.id,
           genre: segment.genres.first.name
         }
       }
