@@ -2,7 +2,6 @@ module SegmentHelper
   def attach_genres(segment)
     if segment.class == Segment
       {
-        id: segment.id,
         name: segment.name,
         body: segment.body,
         latitude: segment.latitude,
