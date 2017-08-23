@@ -1,6 +1,6 @@
 module SegmentHelper
   def attach_genres(segment)
-    if segment.class == Segment
+    if segment.class == Segment && segment.id
       {
         name: segment.name,
         body: segment.body,
@@ -11,6 +11,14 @@ module SegmentHelper
         genre: segment.genres.first.name || nil
       }
 
+    elsif segment.class == Segment
+      {
+        name: segment.name,
+        body: segment.body,
+        latitude: segment.latitude,
+        longitude: segment.longitude,
+        author_id: segment.author_id,
+      }
     elsif segment.empty?
       return []
     else
