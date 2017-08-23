@@ -9,6 +9,7 @@ module SegmentHelper
         latitude: segment.latitude,
         longitude: segment.longitude,
         author_id: segment.author_id,
+        genre_id: segment.genres.first.id,
         genre: segment.genres.first.name
       }
 
