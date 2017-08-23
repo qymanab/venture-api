@@ -4,11 +4,11 @@ RSpec.describe 'Todos API', type: :request do
   let!(:segments) {create_list :segment, 10}
   let(:segment_id) { segments.first.id }
   let(:horror) {Genre.create(name: "horror")}
+  before { segments.each { |segment| segment.genres << horror} }
 
 
 
   describe 'GET /segments' do
-    before { segments.each { |segment| segment.genres << horror} }
     before {get '/segments?latitude=41.876116499999995&longitude=-87.6530416
 '}
 
@@ -19,7 +19,6 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     it 'adds genre to each object' do
-      p json
       expect(json[0]['genre']).to be_truthy
     end
 
