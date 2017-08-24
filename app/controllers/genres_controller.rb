@@ -5,7 +5,7 @@ class GenresController < ApplicationController
     json_response(@genres)
   end
 
-  # GET /genres/query?genres=["horror", "adventure"]
+  # GET /genres/query?genres="horror,adventure"
   def query
     selected_segments = find_genres(params[:genres])
     json_response(selected_segments)

@@ -29,12 +29,11 @@ RSpec.describe 'Todos API', type: :request do
   end
 
   describe 'GET /segments/:id' do
-    before { get "/segments/#{segment_id}?latitude=41.876116499999995&longitude=-87.6530416" }
 
     context 'when the record exists' do
+      before { get "/segments/#{segment_id}?latitude=41.876116499999995&longitude=-87.6530416" }
       it 'returns the segment' do
         expect(json).not_to be_empty
-        expect(json['id']).to eq(segment_id)
       end
 
       it 'returns the status code 200' do
@@ -42,8 +41,15 @@ RSpec.describe 'Todos API', type: :request do
       end
     end
 
+    context 'when the record exists but is out of range' do
+      before { get "/segments/#{segment_id}" }
+      it 'returns the segment' do
+        expect(json['body']).to eq("You are not in range to access this content.")
+      end
+    end
+
     context 'when the record does not exist' do
-      let(:segment_id) { 100 }
+      before { get "/segments/3245345" }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
@@ -79,8 +85,6 @@ RSpec.describe 'Todos API', type: :request do
         expect(json.size).to eq(0)
       end
     end
-
-
   end
 
   describe 'POST /segments' do

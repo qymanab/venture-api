@@ -27,9 +27,7 @@ class SegmentsController < ApplicationController
   def show
     coordinates = [params[:latitude], params[:longitude]]
     @segment = @segment.check_range(coordinates)
-    # @segment_with_genre = attach_genres(@segment)
-    json_response(@segment)
-
+    json_response(attach_genres(@segment))
   end
 
   # PUT /segments/:id
