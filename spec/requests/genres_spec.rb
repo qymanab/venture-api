@@ -45,9 +45,10 @@ RSpec.describe 'Todos API', type: :request do
     describe 'GET /genres/query' do
       context 'when a valid query string is passed' do
 
-        before { get '/genres/query?genres=["horror"]'}
+        before { get '/genres/query?genres="horror"'}
 
         it 'returns segments with horror genre' do
+
           expect(json.size).to eq(1)
         end
       end
@@ -63,7 +64,7 @@ RSpec.describe 'Todos API', type: :request do
 
       context 'when an invalid string is passed' do
 
-        before { get '/genres/query?genres=["fake"]'}
+        before { get '/genres/query?genres="fake,nope"'}
 
         it 'returns all segments' do
           expect(json.size).to eq(0)
