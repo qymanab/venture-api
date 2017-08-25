@@ -17,7 +17,7 @@ class Segment < ApplicationRecord
 
   def self.display_nearby(user_position)
     # user = self.user_coords(user_position)
-    segments = Segment.all
+    segments = Segment.order(created_at: :desc)
    return segments.select {|segment| segment.in_range?(user_position, 15)}
   end
 

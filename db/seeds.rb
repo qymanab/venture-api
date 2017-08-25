@@ -35,12 +35,14 @@ g = Segment.create(name:'We found love at Grant Park' , body: Faker::Lorem.parag
 
 a = Segment.create(name:'Where am I!?' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.80' , longitude: '-87.27')
 
+jimmy = Segment.create(name:'My perfect Jimmy John\'s cookie' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.876887' , longitude: '-87.648035')
+
 j.genres << horror
 w.genres << comedy
 n.genres << fiction
 g.genres << romance
 a.genres << adventure
-
+jimmy.genres << nonfiction
 
 #
 # adventure.segments << Segment.new(name:'Chair' , body: Faker::Lorem.paragraphs(rand(1..5), true), latitude: '41.876116499999995' , longitude: '-87.6530416' )

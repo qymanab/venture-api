@@ -3,7 +3,7 @@ class SegmentsController < ApplicationController
 
   # GET /segment
   def index
-    @segment = Segment.all
+    @segment = Segment.order(created_at: :desc)
     @segments = attach_genres(@segment)
     json_response(@segments)
   end
